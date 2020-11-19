@@ -1,13 +1,13 @@
 <template>
 <nav>
             <div class="logo-container">
-                <img src="res/images/logo.png" alt="postIt">
+                <img src="@/assets/logo.png" alt="postIt">
             </div>
             <div class="search-container">
                 <input type="text" name="search"><button type="button">Search</button>
             </div>
             <div class="avatar-container">
-                <img id="avatar-img" src="res/images/avatar.png" class="avatar" alt="Me">
+                <img id="avatar-img" src="@/assets/avatar.png" class="avatar" alt="Me">
                 <div class="dropdown">
                     <ul>
                         <li id="name"></li>
