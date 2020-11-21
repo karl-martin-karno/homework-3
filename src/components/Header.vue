@@ -42,6 +42,14 @@ nav {
   display: flex;
   background-color: #ffffff;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+nav:hover {
+  box-shadow: 0 -20px 30px #4d4d4d;
 }
 
 nav div {
