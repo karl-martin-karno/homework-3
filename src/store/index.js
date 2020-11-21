@@ -6,13 +6,14 @@ Vue.use(Vuex)
 
 const state = {
   profileData: [],
-  posts: []
+  posts: [],
+  profiles: []
 }
 
 const getters = {}
 
 const actions = {
-  getUser ({ commit }) {
+  getUser ({commit}) {
     axios.get('https://private-517bb-wad20postit.apiary-mock.com/users/1')
       .then(response => {
         console.log(response)
@@ -22,11 +23,21 @@ const actions = {
         console.log(error)
       })
   },
-  getPosts ({ commit }) {
+  getPosts ({commit}) {
     axios.get('https://private-anon-01a41ea7a6-wad20postit.apiary-mock.com/posts')
       .then(response => {
         console.log(response)
         commit('SET_POSTS', response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  },
+  getProfile ({commit}) {
+    axios.get('https://private-anon-55b9e17f14-wad20postit.apiary-mock.com/profiles')
+      .then(response => {
+        console.log(response)
+        commit('SET_PROFILES', response.data)
       })
       .catch(function (error) {
         console.log(error)
@@ -40,6 +51,9 @@ const mutations = {
   },
   SET_POSTS (state, data) {
     state.posts = data
+  },
+  SET_PROFILES (state, data) {
+    state.profiles = data
   }
 }
 
