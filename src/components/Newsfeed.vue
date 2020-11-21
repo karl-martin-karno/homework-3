@@ -23,7 +23,8 @@
             <h3> {{ post.text }} </h3>
           </div>
           <div class="post-actions">
-            <button @click="changeLiked" type="button" name="like" class="like-button"> {{ post.likes }} </button>
+            <button v-bind:class="!clicked ? 'like-button' : 'like-button.liked'"
+                    v-on:click ="clicked = !clicked"> {{ post.likes }} </button>
           </div>
         </div>
       </div>
@@ -37,23 +38,20 @@ import Header from './Header'
 export default {
   name: 'Newsfeed.vue',
   components: {Header},
-  methods: {
-    changeLiked: function (event) {
-      if (event.hasClass('liked')) {
-        event.removeClass('liked')
-      } else {
-        event.addClass('liked')
-      }
+  data () {
+    return {
+      clicked: false
     }
   },
   computed: {
-    getPosts () {
+    getPosts() {
       return this.$store.state.posts
     }
   },
   mounted () {
     this.$store.dispatch('getPosts')
-  }}
+  }
+}
 </script>
 
 <style>
