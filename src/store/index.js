@@ -33,7 +33,7 @@ const actions = {
         console.log(error)
       })
   },
-  getProfile ({commit}) {
+  getProfiles ({commit}) {
     axios.get('https://private-anon-55b9e17f14-wad20postit.apiary-mock.com/profiles')
       .then(response => {
         console.log(response)

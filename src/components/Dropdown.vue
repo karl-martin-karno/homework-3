@@ -1,60 +1,75 @@
 <template>
-  <span class="menu" @click="isOpen = !isOpen">
-    <img id="avatar-img" :src="profileData.avatar" class="avatar" alt="Me">
-    <transition name="fade" appear>
-      <div class="sub-menu" v-if="isOpen">
-        <div> {{ profileData.firstname + " " + profileData.lastname}} </div>
-        <div> {{ profileData.email}} </div>
+  <transition name="slide" v-if="isOpen">
+    <div class="dropdown">
+      <ul>
+        <li>{{ profileData.firstname }} {{ profileData.lastname }}</li>
+        <li>{{ profileData.email }}</li>
         <hr>
-        <div v-for="(item, i) in items" :key="i" class="menu-item">
-          <router-link :to="item.link"> {{ item.title }} </router-link>
-        </div>
-      </div>
-    </transition>
-  </span>
+        <li>
+          <router-link to="/home/id/posts">Feed</router-link>
+        </li>
+        <li>
+          <router-link to="/home/id/browse">Browse</router-link>
+        </li>
+        <li>
+          <router-link to="/">Log out</router-link>
+        </li>
+      </ul>
+    </div>
+  </transition>
 </template>
 
 <script>
+import {EventBus} from '../assets/event-bus'
+
 export default {
-  name: 'dropdown',
-  props: ['items'],
-  data () {
-    return {
-      isOpen: false
-    }
-  },
+  name: 'Dropdown',
   computed: {
     profileData () {
       return this.$store.state.profileData
     }
   },
+  data () {
+    return {
+      isOpen: false
+    }
+  },
   mounted () {
-    this.$store.dispatch('getUser')
-  }}
+    EventBus.$on('toggleDropdown', newValue => {
+      this.isOpen = newValue
+    })
+  }
+}
 </script>
 
-<style>
-.sub-menu {
+<style scoped>
+
+.dropdown {
+  position: fixed;
+  z-index: 1;
+  top: 50px;
   right: 0;
-  position: absolute;
-  padding:20px 25px 20px 0;
-  background-color: #ffffff;
-  min-width: 160px;
-  min-height: 220px;
-  z-index: 999;
+  padding: 25px 25px 0 0;
+
+  background-color: #fff;
+  box-shadow: 0 0 20px var(--dark-shadow);
   font-size: 18px;
 }
 
-.sub-menu a:hover {
-  color: #01579b;
+.dropdown a {
+  font-weight: 600;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: all .5s ease-out;
+.dropdown ul {
+  list-style-type: none;
 }
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+
+.slide-enter-active, .slide-leave-active {
+  transition: all .4s ease;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateY(-100%);
+  box-shadow: none;
 }
 </style>
