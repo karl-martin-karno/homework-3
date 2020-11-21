@@ -15,7 +15,6 @@
 
 <script>
 import Dropdown from './Dropdown'
-
 export default {
   name: 'header',
   components: {

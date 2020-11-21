@@ -3,8 +3,8 @@
     <img id="avatar-img" :src="profileData.avatar" class="avatar" alt="Me">
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
-        <div id="name"> {{ profileData.firstname + " " + profileData.lastname}} </div>
-        <div id="email"> {{ profileData.email}} </div>
+        <div> {{ profileData.firstname + " " + profileData.lastname}} </div>
+        <div> {{ profileData.email}} </div>
         <hr>
         <div v-for="(item, i) in items" :key="i" class="menu-item">
           <router-link :to="item.link"> {{ item.title }} </router-link>
@@ -34,7 +34,6 @@ export default {
 </script>
 
 <style>
-
 .sub-menu {
   right: 0;
   position: absolute;
@@ -58,5 +57,4 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>

@@ -5,11 +5,12 @@
 </template>
 
 <script>
+import Header from './Header'
 export default {
-  name: 'Newsfeed.vue'
+  name: 'Newsfeed.vue',
+  components: {Header}
 }
 </script>
 
-<style scoped>
-
+<style>
 </style>

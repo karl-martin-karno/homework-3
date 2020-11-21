@@ -3,15 +3,15 @@ import App from './App.vue'
 import store from './store'
 import VueRouter from 'vue-router'
 import Login from './components/Login'
-import Header from './components/Header'
 import Browse from './components/Browse'
+import Newsfeed from './components/Newsfeed'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
   {path: '/', component: Login},
-  {path: '/Main', component: Header},
+  {path: '/Newsfeed', component: Newsfeed},
   {path: '/Browse', component: Browse}
 ]
 

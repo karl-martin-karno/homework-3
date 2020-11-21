@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .main-container {
   width: 50%;
   min-height: 100%;
