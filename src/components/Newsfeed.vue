@@ -1,7 +1,34 @@
 <template>
  <div>
    <Header/>
-   <section class="main-container"></section>
+   <section class="main-container">
+     <div v-for="(post, i) in getPosts" :key="i" class="menu-item">
+      <div v-if="post.media != null">
+
+        <div class="post">
+          <div class="post-author">
+            <span class="post-author-info">
+              <img :src="post.author.avatar" alt="Post author">
+              <small> {{ post.author.firstname + " " + post.author.lastname }} </small>
+            </span>
+            <small> {{ post.createTime }} </small>
+          </div>
+          <div class="post-image" v-if="post.media.type === 'image'">
+            <img :src="post.media.url" alt="">
+          </div>
+          <div class="post-image" v-if="post.media.type === 'video'">
+            <video :src="post.media.url" alt=""/>
+          </div>
+          <div class="post-title" v-if="post.text != null">
+            <h3> {{ post.text }} </h3>
+          </div>
+          <div class="post-actions">
+            <button type="button" name="like" class="like-button"> {{ post.likes }} </button>
+          </div>
+        </div>
+      </div>
+     </div>
+   </section>
  </div>
 </template>
 
@@ -9,8 +36,15 @@
 import Header from './Header'
 export default {
   name: 'Newsfeed.vue',
-  components: {Header}
-}
+  components: {Header},
+  computed: {
+    getPosts () {
+      return this.$store.state.posts
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getPosts')
+  }}
 </script>
 
 <style>
@@ -59,7 +93,6 @@ export default {
 .post .post-author .post-author-info small {
   position: absolute;
   top: 10px;
-  left: 35px;
 }
 
 .post .post-author .post-author-info + small {
@@ -68,11 +101,11 @@ export default {
   padding: 10px;
 }
 
-.post .post-image img, video {
+.post-image img, video {
   width: 100%;
 }
 
-.post .post-title {
+.post-title {
   padding: 10px;
 }
 
@@ -80,7 +113,7 @@ export default {
   display: inline;
 }
 
-.post .post-title ~ .post-actions {
+.post-title ~ .post-actions {
   padding: 10px;
 }
 

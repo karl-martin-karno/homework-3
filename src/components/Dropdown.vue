@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'dropdown',
-  props: ['info', 'items'],
+  props: ['items'],
   data () {
     return {
       isOpen: false
