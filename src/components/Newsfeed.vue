@@ -23,7 +23,7 @@
             <h3> {{ post.text }} </h3>
           </div>
           <div class="post-actions">
-            <button type="button" name="like" class="like-button"> {{ post.likes }} </button>
+            <button @click="changeLiked" type="button" name="like" class="like-button"> {{ post.likes }} </button>
           </div>
         </div>
       </div>
@@ -37,6 +37,15 @@ import Header from './Header'
 export default {
   name: 'Newsfeed.vue',
   components: {Header},
+  methods: {
+    changeLiked: function (event) {
+      if (event.hasClass('liked')) {
+        event.removeClass('liked')
+      } else {
+        event.addClass('liked')
+      }
+    }
+  },
   computed: {
     getPosts () {
       return this.$store.state.posts
@@ -134,29 +143,6 @@ export default {
 
 .like-button.liked {
   background-color: #01579b;
-}
-
-.follow-button {
-  display: inline-block;
-  border-radius: 4px;
-  border: 2px solid #663399;
-  text-align: center;
-  padding: 10px;
-  width: 30%;
-  min-width: max-content;
-  transition: all 0.5s;
-  margin: auto;
-  font-size: inherit;
-}
-
-.follow-button.follow {
-  background-color: #663399;
-  color: #FFFFFF;
-}
-
-.follow-button.followed {
-  background-color: #FFFFFF;
-  color: #663399;
 }
 
 h1{
