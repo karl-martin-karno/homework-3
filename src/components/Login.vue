@@ -22,7 +22,7 @@
               <input type="password" name="password" placeholder="Password">
             </div>
             <div>
-              <router-link to="/Newsfeed" tag="button"> Log in </router-link>
+              <router-link to="/Newsfeed" tag="button" > Log in </router-link>
             </div>
             <div>
               <small>
@@ -83,8 +83,18 @@ button:hover {
   cursor: pointer;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+header:hover {
+  box-shadow: 0 -20px 30px #4d4d4d;
+}
+
 h1 {
-  padding-top: 5px;
-  font-size:20px;
+    font-size:20px;
 }
 </style>
