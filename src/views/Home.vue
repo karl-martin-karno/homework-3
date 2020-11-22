@@ -2,7 +2,11 @@
   <div>
     <SearchBar/>
     <Dropdown/>
-    <router-view/>
+    <main>
+      <transition name="fade-slide" mode="out-in">
+        <router-view/>
+      </transition>
+    </main>
   </div>
 </template>
 
@@ -26,5 +30,19 @@ main {
   padding-top: 80px;
   background-color: #fff;
   box-shadow: 0 0 50px var(--dark-shadow)
+}
+
+.fade-slide-enter-active, .fade-slide-leave-active {
+  transition: all .8s ease;
+}
+
+.fade-slide-enter {
+  transform: translateX(-40%);
+  opacity: 0;
+}
+
+.fade-slide-leave-active {
+  transform: translateX(80%);
+  opacity: 0;
 }
 </style>

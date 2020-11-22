@@ -1,10 +1,11 @@
 <template>
-  <main>
+  <div>
     <div v-for="(post, i) in getPosts" :key="i" class="menu-item">
       <div class="post">
         <div class="post-top">
           <img class="img-profile" :src="post.author.avatar" alt="Post author">
-          <div class="profile-name">{{ post.author.firstname }} {{ post.author.lastname }}</div>
+          <div class="profile-name">{{ post.author.firstname | capitalize }} {{ post.author.lastname | capitalize }}
+          </div>
           <div>{{ post.createTime }}</div>
         </div>
         <div class="media" v-if="post.media != null && post.media.type === 'image'">
@@ -19,11 +20,11 @@
         </p>
         <div class="like">
           <LikeButton/>
-          <div class="like-counter" :id="'like-counter-' + i">{{ post.likes }}</div>
+          <div class="like-counter">{{ post.likes }}</div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>

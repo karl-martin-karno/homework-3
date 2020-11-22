@@ -2,7 +2,7 @@
   <transition name="slide" v-if="isOpen">
     <div class="dropdown">
       <ul>
-        <li>{{ profileData.firstname }} {{ profileData.lastname }}</li>
+        <li>{{ profileData.firstname | capitalize }} {{ profileData.lastname | capitalize }}</li>
         <li>{{ profileData.email }}</li>
         <hr>
         <li>

@@ -1,5 +1,5 @@
 <template>
-  <button class="follow-button follow" v-bind:class="{unfollow: isFollowed}"
+  <button class="follow-button" v-bind:class="{unfollow: isFollowed}"
           @click="isFollowed = !isFollowed">{{ isFollowed ? 'Followed' : 'Follow' }}
   </button>
 </template>

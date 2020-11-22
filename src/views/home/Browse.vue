@@ -1,11 +1,11 @@
 <template>
-  <main>
+  <div class="browse">
     <div class="profile-container" v-for="(profile, i) in profileData" :key="i">
       <img id="profile-avatar" :src="profile.avatar" class="profile-avatar" alt="Me">
-      <p>{{ profile.firstname }} {{ profile.lastname }}</p>
+      <p>{{ profile.firstname | capitalize }} {{ profile.lastname | capitalize }}</p>
       <FollowButton/>
     </div>
-  </main>
+  </div>
 </template>
 <script>
 import FollowButton from '../../components/FollowButton'
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-main {
+.browse {
   text-align: center;
   margin: 0 auto;
 }
@@ -39,7 +39,7 @@ main {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(38, 50, 56, 0.33);
+  box-shadow: 0 0 10px #9b9b9b;
   font-weight: 600;
   font-size: 24px;
 }
@@ -52,4 +52,5 @@ main {
   object-position: 50% 10%;
   clip-path: circle();
 }
+
 </style>

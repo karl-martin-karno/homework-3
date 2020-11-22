@@ -10,6 +10,12 @@ import Home from './views/Home'
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
 const routes = [
   {path: '/', component: Login},
   {
